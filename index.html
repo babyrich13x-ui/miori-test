@@ -163,14 +163,9 @@
                 </button>
             </div>
             <div class="bg-white rounded-2xl p-4 shadow-sm border border-pink-100 flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                    <div class="w-8 h-8 rounded-full bg-pink-400 text-white flex items-center justify-center shrink-0">
-                        <i class="fa-solid fa-comment-dots text-sm"></i>
-                    </div>
-                    <div class="flex items-baseline space-x-1">
-                        <span id="reviewCountHeader" class="font-heading text-lg font-bold text-pink-900">0</span>
-                        <span class="font-heading text-sm text-pink-900 font-medium">รีวิว</span>
-                    </div>
+                <div>
+                    <h3 class="font-heading text-sm text-pastel-darkpink font-medium">💬 รีวิวจากลูกค้า</h3>
+                    <p class="text-[10px] text-gray-400">แบ่งปันความประทับใจของคุณได้ที่นี่ค่ะ</p>
                 </div>
                 <button id="writeReviewBtn" onclick="toggleWriteReviewModal()" class="bg-pastel-darkpink hover:bg-pastel-deepness text-white text-[11px] px-3 py-1.5 rounded-full font-medium transition shadow-sm flex items-center space-x-1 shrink-0">
                     <i class="fa-solid fa-pen text-[9px]"></i>
@@ -569,6 +564,7 @@
         let heroImageBase64Temp = null;
         let isPlaying = false;
         let currentProfileSlide = 0;
+
         // --- PROFILE BANNER SLIDER FUNCTIONS ---
         function updateProfileSliderUI() {
             const slider = document.getElementById('profileBannerSlider');
@@ -598,6 +594,7 @@
             currentProfileSlide = index;
             updateProfileSliderUI();
         }
+
         // --- MUSIC TOGGLE FUNCTION ---
         function toggleMusic() {
             const audio = document.getElementById('bgAudio');
@@ -649,6 +646,7 @@
                 else if (settings.profileBanner) document.getElementById('profileBannerImg1').src = settings.profileBanner;
                 if (settings.profileBanner2) document.getElementById('profileBannerImg2').src = settings.profileBanner2;
                 if (settings.profileBanner3) document.getElementById('profileBannerImg3').src = settings.profileBanner3;
+
                 if (settings.aboutText) document.getElementById('aboutDetailText').textContent = settings.aboutText;
                 if (settings.contactIg) document.getElementById('contactIgText').textContent = settings.contactIg;
                 if (settings.contactLine) document.getElementById('contactLineText').textContent = settings.contactLine;
@@ -914,7 +912,7 @@
                 card.innerHTML = `
                     ${adminControls}
                     <div class="overflow-hidden rounded-xl mb-2 aspect-square bg-pastel-lightpink">
-                        <img src="${prod.image || ''}" alt="${prod.name || 'สินค้า'}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.src='https://via.placeholder.com/300?text=No+Image'">
+                        <img src="prod.image||''"alt="{prod.name || 'สินค้า'}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.src='https://via.placeholder.com/300?text=No+Image'">
                     </div>
                     <div class="space-y-0.5 mb-2">
                         <h4 class="font-medium text-[11px] text-gray-800 line-clamp-1">${prod.name || 'ไม่มีชื่อสินค้า'}</h4>
@@ -999,10 +997,6 @@
             const approvedReviews = reviews.filter(r => r.status === 'approved');
             const pendingReviews = reviews.filter(r => r.status === 'pending');
             document.getElementById('approvedCountText').textContent = `ทั้งหมด ${approvedReviews.length} รีวิว`;
-            const reviewCountHeader = document.getElementById('reviewCountHeader');
-            if (reviewCountHeader) {
-                reviewCountHeader.textContent = approvedReviews.length;
-            }
             if (isAdmin) {
                 adminModSection.classList.remove('hidden');
                 document.getElementById('pendingCountBadge').textContent = `${pendingReviews.length} รายการ`;
@@ -1080,6 +1074,7 @@
             }
             return hash;
         }
+
         function loginAdmin() {
             const email = document.getElementById('adminEmail').value.trim().toLowerCase();
             const pwd = document.getElementById('adminPassword').value;
@@ -1183,3 +1178,4 @@
     </script>
 </body>
 </html>
+
