@@ -164,12 +164,12 @@
             </div>
             <div class="bg-white rounded-2xl p-4 shadow-sm border border-pink-100 flex items-center justify-between">
                 <div class="flex items-center space-x-2">
-                    <div class="w-9 h-9 rounded-full bg-pink-400 text-white flex items-center justify-center text-sm shadow-sm shrink-0">
-                        <i class="fa-solid fa-comment-dots"></i>
+                    <div class="w-8 h-8 rounded-full bg-pink-400 text-white flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-comment-dots text-sm"></i>
                     </div>
                     <div class="flex items-baseline space-x-1">
-                        <span id="reviewHeaderCount" class="font-heading text-lg text-pink-900 font-bold">0</span>
-                        <span class="font-heading text-base text-pink-900 font-medium">รีวิว</span>
+                        <span id="reviewCountHeader" class="font-heading text-lg font-bold text-pink-900">0</span>
+                        <span class="font-heading text-sm text-pink-900 font-medium">รีวิว</span>
                     </div>
                 </div>
                 <button id="writeReviewBtn" onclick="toggleWriteReviewModal()" class="bg-pastel-darkpink hover:bg-pastel-deepness text-white text-[11px] px-3 py-1.5 rounded-full font-medium transition shadow-sm flex items-center space-x-1 shrink-0">
@@ -999,12 +999,10 @@
             const approvedReviews = reviews.filter(r => r.status === 'approved');
             const pendingReviews = reviews.filter(r => r.status === 'pending');
             document.getElementById('approvedCountText').textContent = `ทั้งหมด ${approvedReviews.length} รีวิว`;
-            
-            const reviewHeaderCount = document.getElementById('reviewHeaderCount');
-            if (reviewHeaderCount) {
-                reviewHeaderCount.textContent = approvedReviews.length;
+            const reviewCountHeader = document.getElementById('reviewCountHeader');
+            if (reviewCountHeader) {
+                reviewCountHeader.textContent = approvedReviews.length;
             }
-
             if (isAdmin) {
                 adminModSection.classList.remove('hidden');
                 document.getElementById('pendingCountBadge').textContent = `${pendingReviews.length} รายการ`;
@@ -1178,7 +1176,7 @@
             openProductModal(true);
         }
         function deleteProduct(id) {
-            if (confirm('ต้องการลบสินค้านี้ใช่หรือไม่?') และ rtdb) {
+            if (confirm('ต้องการลบสินค้านี้ใช่หรือไม่?') && rtdb) {
                 rtdb.ref(`products/${id}`).remove();
             }
         }
