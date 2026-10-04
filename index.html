@@ -564,7 +564,6 @@
         let heroImageBase64Temp = null;
         let isPlaying = false;
         let currentProfileSlide = 0;
-
         // --- PROFILE BANNER SLIDER FUNCTIONS ---
         function updateProfileSliderUI() {
             const slider = document.getElementById('profileBannerSlider');
@@ -594,7 +593,6 @@
             currentProfileSlide = index;
             updateProfileSliderUI();
         }
-
         // --- MUSIC TOGGLE FUNCTION ---
         function toggleMusic() {
             const audio = document.getElementById('bgAudio');
@@ -646,7 +644,6 @@
                 else if (settings.profileBanner) document.getElementById('profileBannerImg1').src = settings.profileBanner;
                 if (settings.profileBanner2) document.getElementById('profileBannerImg2').src = settings.profileBanner2;
                 if (settings.profileBanner3) document.getElementById('profileBannerImg3').src = settings.profileBanner3;
-
                 if (settings.aboutText) document.getElementById('aboutDetailText').textContent = settings.aboutText;
                 if (settings.contactIg) document.getElementById('contactIgText').textContent = settings.contactIg;
                 if (settings.contactLine) document.getElementById('contactLineText').textContent = settings.contactLine;
@@ -912,7 +909,7 @@
                 card.innerHTML = `
                     ${adminControls}
                     <div class="overflow-hidden rounded-xl mb-2 aspect-square bg-pastel-lightpink">
-                        <img src="prod.image||''"alt="{prod.name || 'สินค้า'}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.src='https://via.placeholder.com/300?text=No+Image'">
+                        <img src="${prod.image || ''}" alt="${prod.name || 'สินค้า'}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.src='https://via.placeholder.com/300?text=No+Image'">
                     </div>
                     <div class="space-y-0.5 mb-2">
                         <h4 class="font-medium text-[11px] text-gray-800 line-clamp-1">${prod.name || 'ไม่มีชื่อสินค้า'}</h4>
@@ -1074,7 +1071,6 @@
             }
             return hash;
         }
-
         function loginAdmin() {
             const email = document.getElementById('adminEmail').value.trim().toLowerCase();
             const pwd = document.getElementById('adminPassword').value;
@@ -1178,4 +1174,3 @@
     </script>
 </body>
 </html>
-
